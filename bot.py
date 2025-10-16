@@ -7,6 +7,7 @@ import json
 import asyncio
 import random
 import math
+import os  # ← ADDED THIS LINE
 
 # Configure logging
 logging.basicConfig(
@@ -264,8 +265,8 @@ def main():
         # Initialize database
         init_db()
         
-        # Create application
-        application = Application.builder().token("YOUR_BOT_TOKEN_HERE").build()
+        # Create application - FIXED THIS LINE ↓
+        application = Application.builder().token(os.environ['BOT_TOKEN']).build()
         
         # Add handlers
         application.add_handler(CommandHandler("start", start))
